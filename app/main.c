@@ -1,5 +1,6 @@
 #include "stm32f4xx_hal.h"
 #include "stm32f4xx_hal_gpio.h"
+#include "initGPIO.h"
 
 #define turnOnLED1()	HAL_GPIO_WritePin(GPIOG, GPIO_PIN_13, GPIO_PIN_SET);
 #define turnOffLED1()	HAL_GPIO_WritePin(GPIOG, GPIO_PIN_13, GPIO_PIN_RESET);
@@ -9,10 +10,11 @@
 #define turnOffLED3()	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, GPIO_PIN_RESET);
 #define turnOnLED4()	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_5, GPIO_PIN_SET);
 #define turnOffLED4()	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_5, GPIO_PIN_RESET);
-
+//#define ButtonPressed() HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0);
 
 #define ONE_SEC 1000
-#define TWO_HUNDRED_MILI_SEC 240
+#define TWO_HUNDRED_FORTY_MILI_SEC 240
+#define ONE_HUNDERED_TWENTY_MILI_SEC 120
 
 typedef enum{
 	INITIAL,
@@ -26,38 +28,6 @@ typedef enum{
 	LED4_ON,
 	Final
 }State;
-
-void initLED1(){
-	//GPIO_TypeDef 	 GpioType;
-	GPIO_InitTypeDef GpioInfo;
-
-	__HAL_RCC_GPIOG_CLK_ENABLE();
-
-	GpioInfo.Mode = GPIO_MODE_OUTPUT_PP;
-	GpioInfo.Pin = GPIO_PIN_13;
-	GpioInfo.Pull = GPIO_NOPULL;
-	GpioInfo.Speed = GPIO_SPEED_HIGH;
-	//GpioInfo.Alternate = GPIO_MODE_AF_PP;
-
-	//Init LED on PG13
-	HAL_GPIO_Init(GPIOG, &GpioInfo);
-}
-
-void initLED2(){
-	//GPIO_TypeDef 	 GpioType;
-	GPIO_InitTypeDef GpioInfo;
-
-	__HAL_RCC_GPIOG_CLK_ENABLE();
-
-	GpioInfo.Mode = GPIO_MODE_OUTPUT_PP;
-	GpioInfo.Pin = GPIO_PIN_14;
-	GpioInfo.Pull = GPIO_NOPULL;
-	GpioInfo.Speed = GPIO_SPEED_HIGH;
-	//GpioInfo.Alternate = GPIO_MODE_AF_PP;
-
-	//Init LED on PG14
-	HAL_GPIO_Init(GPIOG, &GpioInfo);
-}
 
 uint32_t getCurrentTime(){
 	static uint32_t counter = 0;
@@ -88,9 +58,10 @@ int main(void){
 	static *state1 = INITIAL, *state2 = INITIAL, *state3 = INITIAL, *state4 = INITIAL;
 	initLED1();
 	initLED2();
+	initUserButton();
 
     while(1){
-    	blinkLED1(&state1,TWO_HUNDRED_MILI_SEC);
+    	blinkLED1(&state1,TWO_HUNDRED_FORTY_MILI_SEC);
     	blinkLED2(&state2,ONE_SEC);
     }
 }
@@ -142,6 +113,15 @@ void blinkLED2(State *state, int time){
 
 		default: 		break;
 	}
+}
+
+
+void blinkLED3(State *state){
+	static int previousTime = 0 ;
+
+	//if(ButtonPressed()){
+
+	//}
 }
 
 
