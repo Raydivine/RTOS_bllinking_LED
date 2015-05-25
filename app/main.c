@@ -12,7 +12,9 @@
 
 #define buttonPressed() HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_0);
 #define ONE_SEC 1000
-#define TWO_HUNDRED_MILI_SEC 240
+#define TWO_HUNDRED_FOURTY_MILI_SEC 240
+#define ONE_HUNDRED_TWENTY_MILI_SEC 120
+#define TWO_HUNDRED_MILI_SEC 200
 
 typedef enum{
 	INITIAL,
@@ -93,12 +95,12 @@ int waitWithoutDelay ( int previousTime, int delayMilliSecond){
 int main(void){
 	static *state1 = INITIAL, *state2 = INITIAL, *state3 = INITIAL, *state4 = INITIAL;
 	initLED();
-  initButton();
+	initButton();
 
     while(1){
-    	blinkLED1(&state1,TWO_HUNDRED_MILI_SEC);
+    	blinkLED1(&state1,ONE_HUNDRED_TWENTY_MILI_SEC);
     	blinkLED2(&state2,ONE_SEC);
-    	blinkLED3(&state3,ONE_SEC);
+    	blinkLED3(&state3,TWO_HUNDRED_MILI_SEC);
     }
 }
 
@@ -156,28 +158,30 @@ void blinkLED3(State *state, int time){
 	static int counter = 0 ;
 
 	GPIO_PinState readButton ;
-	readButton == buttonPressed();
+	readButton = buttonPressed()
 
     switch (*state){
-      case   INITIAL: if(readButton == 1 ){
+      case  INITIAL:   if(readButton == 1 ){
                           turnOnLED3();
                           *state = LED3_ON;
-                          counter == 0 ; // reset the couter to 0
+                          counter = 0 ; // reset the couter to 0
                        }break;
 
-      case  LED3_ON:	if( waitWithoutDelay( previousTime,time) ){
-                        previousTime = getCurrentTime();
-                        turnOffLED3();
-                        *state = LED3_OFF;
-                        counter++;
+      case  LED3_ON:  if( waitWithoutDelay( previousTime,time) ){
+    	  	  	  	  	  previousTime = getCurrentTime();
+    	  	  	  	  	  turnOffLED3();
+    	  	  	  	  	  *state = LED3_OFF;
+    	  	  	  	  	  counter++;
                       }break;
 
-      case LED3_OFF:  if( counter>= 5)
-                         *state = INITIAL;
+      case LED3_OFF:  if( counter>= 5){
+    	  	  	  	  	  *state = INITIAL;
+    	  	  	  	  	  break;
+      	  	  	  	  }
                       if( waitWithoutDelay( previousTime,time) ){
-                        previousTime = getCurrentTime();
-                        turnOnLED3();
-                        *state = LED3_ON;
+                    	  previousTime = getCurrentTime();
+                    	  turnOnLED3();
+                    	  *state = LED3_ON;
                       }break;
 
       default: 		break;

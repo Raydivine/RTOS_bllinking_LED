@@ -16,14 +16,14 @@
       <target file="stm32f4xx_hal_rcc.o" lastModified="14d6522dd5c">
          <source file="..\..\..\..\stm32cubef4\STM32Cube_FW_F4_V1.5.0\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rcc.c" lastModified="14c0ebff252"/>
       </target>
-      <target file="main.o" lastModified="14d88afe276">
-         <source file="..\..\..\app\main.c" lastModified="14d88afddb6"/>
-      </target>
-      <target file="initGPIO.o" lastModified="14d6ab3b692">
-         <source file="..\..\..\app\initGPIO.c" lastModified="14d6ab2fc11"/>
+      <target file="main.o" lastModified="14d88bbe20b">
+         <source file="..\..\..\app\main.c" lastModified="14d88bbddb7"/>
       </target>
       <target file="startup_stm32f429xx.o" lastModified="14d6522dc34">
          <source file="..\..\..\app\startup_stm32f429xx.s" lastModified="14c0ebfd050"/>
+      </target>
+      <target file="initGPIO.o" lastModified="14d6ab3b692">
+         <source file="..\..\..\app\initGPIO.c" lastModified="14d6ab2fc11"/>
       </target>
    </processor>
 </history>
