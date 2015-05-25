@@ -3,6 +3,9 @@
 #include "blinkLEDs.h"
 #include "defination.h"
 
+
+
+
 void blinkLED1(State *state, int time){
 	static int previousTime = 0 ;
 
@@ -28,8 +31,16 @@ void blinkLED1(State *state, int time){
 	}
 }
 
-void blinkLED2(State *state, int time){
-	static int previousTime = 0 ;
+void blinkLED2(State *state){
+	static int previousTime = 0 , time = 0;
+	GPIO_PinState readButton ;
+	readButton = buttonPressed();
+
+	if(readButton ==1)
+		time = TWO_HUNDRED_MILI_SEC;
+	else if((readButton ==0))
+		time = ONE_SEC;
+
 
 	switch (*state){
 		case INITIAL: 	turnOffLED2();
@@ -52,6 +63,7 @@ void blinkLED2(State *state, int time){
 	}
 }
 
+
 void blinkLED3(State *state, int time){
 	static int previousTime = 0 ;
 	static int counter = 0 ;
@@ -59,31 +71,34 @@ void blinkLED3(State *state, int time){
 	GPIO_PinState readButton ;
 	readButton = buttonPressed()
 
-    switch (*state){
-      case  INITIAL:   if(readButton == 1 ){
-                          turnOnLED3();
-                          *state = LED3_ON;
-                          counter = 0 ; // reset the counter to 0
-                       }break;
 
-      case  LED3_ON:  if( waitWithoutDelay( previousTime,time) ){
-    	  	  	  	  	  previousTime = getCurrentTime();
-    	  	  	  	  	  turnOffLED3();
-    	  	  	  	  	  *state = LED3_OFF;
-    	  	  	  	  	  counter++;
+	if(readButton ==1){
+		switch (*state){
+			case  INITIAL:	turnOffLED3();
+							*state = LED3_OFF;
+							break;
 
-                      }break;
+			case  LED3_ON:	if(counter !=5)
+							if( waitWithoutDelay( previousTime,time) ){
+    	  	  	  	  			previousTime = getCurrentTime();
+    	  	  	  	  			turnOffLED3();
+    	  	  	  	  			*state = LED3_OFF;
+                      		}break;
 
-      case LED3_OFF:  if( counter> 5){
-    	  	  	  	  	  *state = INITIAL;
-    	  	  	  	  	  break;
-      	  	  	  	  }
-                      if( waitWithoutDelay( previousTime,time) ){
-                    	  previousTime = getCurrentTime();
-                    	  turnOnLED3();
-                    	  *state = LED3_ON;
-                      }break;
+			case LED3_OFF:	if( waitWithoutDelay( previousTime,time) ){
+    	  	  	  	  			previousTime = getCurrentTime();
+    	  	  	  	  			turnOnLED3();
+    	  	  	  	  			*state = LED3_ON;
+    	  	  	  	  			counter++;
+                      		}break;
 
-      default: 		break;
+			default: 		break;
+		}
+	}
+    else if(readButton ==0){
+    	turnOffLED3();
+    	*state = LED3_OFF;
     }
+
 }
+

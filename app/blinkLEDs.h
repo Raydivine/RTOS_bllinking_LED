@@ -3,7 +3,7 @@
 #include "defination.h"
 
 void blinkLED1(State *state, int time);
-void blinkLED2(State *state, int time);
+void blinkLED2(State *state);
 void blinkLED3(State *state, int time);
 
 

@@ -6,16 +6,6 @@
 #include "defination.h"
 #include "timingControl.h"
 
-#define ONE_SEC 1000
-#define THREE_SEC 3000
-#define TWO_HUNDRED_FOURTY_MILI_SEC 240
-#define ONE_HUNDRED_TWENTY_MILI_SEC 120
-#define TWO_HUNDRED_MILI_SEC 200
-#define FIVE_HUNDRED_MILI_SEC 500
-
-#define yield(x)		 state = __LINE__; break; case __LINE__:
-#define startTask(x)	 switch(state){ case 0;
-#define endTask(x)		 }
 /*
 void testNestedCase(){
 	static int state =0, here =0;
@@ -59,7 +49,7 @@ int main(void){
     while(1){
 
     	blinkLED1(&state1,ONE_HUNDRED_TWENTY_MILI_SEC);
-    	blinkLED2(&state2,ONE_SEC);
+    	blinkLED2(&state2);
     	blinkLED3(&state3,FIVE_HUNDRED_MILI_SEC);
     }
 }
