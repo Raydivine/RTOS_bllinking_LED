@@ -1,6 +1,5 @@
 #include "stm32f4xx_hal.h"
 #include "stm32f4xx_hal_gpio.h"
-#include "initGPIO.h"
 
 #define turnOnLED1()	HAL_GPIO_WritePin(GPIOG, GPIO_PIN_13, GPIO_PIN_SET);
 #define turnOffLED1()	HAL_GPIO_WritePin(GPIOG, GPIO_PIN_13, GPIO_PIN_RESET);
@@ -10,11 +9,10 @@
 #define turnOffLED3()	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, GPIO_PIN_RESET);
 #define turnOnLED4()	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_5, GPIO_PIN_SET);
 #define turnOffLED4()	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_5, GPIO_PIN_RESET);
-//#define ButtonPressed() HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0);
 
+#define buttonPressed() HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_0);
 #define ONE_SEC 1000
-#define TWO_HUNDRED_FORTY_MILI_SEC 240
-#define ONE_HUNDERED_TWENTY_MILI_SEC 120
+#define TWO_HUNDRED_MILI_SEC 240
 
 typedef enum{
 	INITIAL,
@@ -28,6 +26,44 @@ typedef enum{
 	LED4_ON,
 	Final
 }State;
+
+
+void initButton(){
+  //GPIO_TypeDef GpioType;
+  GPIO_InitTypeDef pushButton;
+
+  __GPIOA_CLK_ENABLE();
+
+  pushButton.Mode = GPIO_MODE_INPUT;
+  pushButton.Pin = GPIO_PIN_0;
+  pushButton.Pull = GPIO_NOPULL;
+  pushButton.Speed = GPIO_SPEED_HIGH;
+
+  //GpioInfo.Alternate = GPIO_MODE_AF_PP;
+  //Init LED on PA0
+  HAL_GPIO_Init(GPIOA, &pushButton);
+}
+
+
+void initLED(){
+  GPIO_InitTypeDef GpioInfo ;
+
+  __GPIOG_CLK_ENABLE();
+  __GPIOB_CLK_ENABLE();
+  __GPIOC_CLK_ENABLE();
+
+  GpioInfo.Mode = GPIO_MODE_OUTPUT_PP ;
+  GpioInfo.Pin = GPIO_PIN_13 | GPIO_PIN_14; // Init PG13 and PG14
+  GpioInfo.Pull = GPIO_NOPULL ;
+  GpioInfo.Speed = GPIO_SPEED_HIGH ;
+  HAL_GPIO_Init(GPIOG,&GpioInfo);  //Init LED1 on PG13 , lED 2 on PG14
+
+  GpioInfo.Pin = GPIO_PIN_13;     // Init PB13
+  HAL_GPIO_Init(GPIOB,&GpioInfo); //Init LED3 on PB13
+
+  GpioInfo.Pin = GPIO_PIN_5 ;     // Init PC5
+  HAL_GPIO_Init(GPIOC,&GpioInfo); //Init LED4 on PC5
+}
 
 uint32_t getCurrentTime(){
 	static uint32_t counter = 0;
@@ -56,13 +92,13 @@ int waitWithoutDelay ( int previousTime, int delayMilliSecond){
 
 int main(void){
 	static *state1 = INITIAL, *state2 = INITIAL, *state3 = INITIAL, *state4 = INITIAL;
-	initLED1();
-	initLED2();
-	initUserButton();
+	initLED();
+  initButton();
 
     while(1){
-    	blinkLED1(&state1,TWO_HUNDRED_FORTY_MILI_SEC);
+    	blinkLED1(&state1,TWO_HUNDRED_MILI_SEC);
     	blinkLED2(&state2,ONE_SEC);
+    	blinkLED3(&state3,ONE_SEC);
     }
 }
 
@@ -76,14 +112,14 @@ void blinkLED1(State *state, int time){
 
 		case LED1_OFF:	if( waitWithoutDelay( previousTime,time) ){
 							previousTime = getCurrentTime();
-							turnOffLED1();
+							turnOnLED1();
 							*state = LED1_ON;
 						}
 							break;
 
 		case LED1_ON:	if( waitWithoutDelay( previousTime,time) ){
 							previousTime = getCurrentTime();
-							turnOnLED1();
+							turnOffLED1();
 							*state = LED1_OFF;
 						}break;
 
@@ -101,13 +137,13 @@ void blinkLED2(State *state, int time){
 
 		case LED2_OFF:	if( waitWithoutDelay( previousTime,time) ){
 							previousTime = getCurrentTime();
-							turnOffLED2();
+							turnOnLED2();
 							*state = LED2_ON;
 						}break;
 
 		case LED2_ON:	if( waitWithoutDelay( previousTime,time) ){
 							previousTime = getCurrentTime();
-							turnOnLED2();
+							turnOffLED2();
 							*state = LED2_OFF;
 						}break;
 
@@ -115,13 +151,35 @@ void blinkLED2(State *state, int time){
 	}
 }
 
-
-void blinkLED3(State *state){
+void blinkLED3(State *state, int time){
 	static int previousTime = 0 ;
+	static int counter = 0 ;
 
-	//if(ButtonPressed()){
+	GPIO_PinState readButton ;
+	readButton == buttonPressed();
 
-	//}
+    switch (*state){
+      case   INITIAL: if(readButton == 1 ){
+                          turnOnLED3();
+                          *state = LED3_ON;
+                          counter == 0 ; // reset the couter to 0
+                       }break;
+
+      case  LED3_ON:	if( waitWithoutDelay( previousTime,time) ){
+                        previousTime = getCurrentTime();
+                        turnOffLED3();
+                        *state = LED3_OFF;
+                        counter++;
+                      }break;
+
+      case LED3_OFF:  if( counter>= 5)
+                         *state = INITIAL;
+                      if( waitWithoutDelay( previousTime,time) ){
+                        previousTime = getCurrentTime();
+                        turnOnLED3();
+                        *state = LED3_ON;
+                      }break;
+
+      default: 		break;
+    }
 }
-
-
