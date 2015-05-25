@@ -12,9 +12,11 @@
 
 #define buttonPressed() HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_0);
 #define ONE_SEC 1000
+#define THREE_SEC 3000
 #define TWO_HUNDRED_FOURTY_MILI_SEC 240
 #define ONE_HUNDRED_TWENTY_MILI_SEC 120
 #define TWO_HUNDRED_MILI_SEC 200
+#define FIVE_HUNDRED_MILI_SEC 500
 
 typedef enum{
 	INITIAL,
@@ -100,7 +102,7 @@ int main(void){
     while(1){
     	blinkLED1(&state1,ONE_HUNDRED_TWENTY_MILI_SEC);
     	blinkLED2(&state2,ONE_SEC);
-    	blinkLED3(&state3,TWO_HUNDRED_MILI_SEC);
+    	blinkLED3(&state3,FIVE_HUNDRED_MILI_SEC);
     }
 }
 
@@ -172,9 +174,10 @@ void blinkLED3(State *state, int time){
     	  	  	  	  	  turnOffLED3();
     	  	  	  	  	  *state = LED3_OFF;
     	  	  	  	  	  counter++;
+
                       }break;
 
-      case LED3_OFF:  if( counter>= 5){
+      case LED3_OFF:  if( counter> 5){
     	  	  	  	  	  *state = INITIAL;
     	  	  	  	  	  break;
       	  	  	  	  }
