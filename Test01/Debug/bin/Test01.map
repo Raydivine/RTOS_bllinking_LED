@@ -84,8 +84,6 @@ Discarded input sections
  .ARM.attributes
                 0x00000000       0x2e c:/program files/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-__atexit.o)
  .data          0x00000000        0x0 ..\obj\blinkLEDs.o
- .data          0x00000000        0x0 ..\obj\stm32f4xx_hal_gpio.o
- .bss           0x00000000        0x0 ..\obj\stm32f4xx_hal_gpio.o
  .text          0x00000000      0x544 ..\obj\stm32f4xx_hal_cortex.o
  .data          0x00000000        0x0 ..\obj\stm32f4xx_hal_cortex.o
  .bss           0x00000000        0x0 ..\obj\stm32f4xx_hal_cortex.o
@@ -103,6 +101,22 @@ Discarded input sections
  .bss           0x00000000        0x0 ..\obj\initButton.o
  .data          0x00000000        0x0 ..\obj\initLED.o
  .bss           0x00000000        0x0 ..\obj\initLED.o
+ .bss           0x00000000        0x0 ..\obj\system_stm32f4xx.o
+ .text          0x00000000      0x368 ..\obj\stm32f4xx_hal.o
+ .data          0x00000000        0x0 ..\obj\stm32f4xx_hal.o
+ .bss           0x00000000        0x4 ..\obj\stm32f4xx_hal.o
+ .debug_info    0x00000000      0xa1c ..\obj\stm32f4xx_hal.o
+ .debug_abbrev  0x00000000      0x1ff ..\obj\stm32f4xx_hal.o
+ .debug_aranges
+                0x00000000       0x20 ..\obj\stm32f4xx_hal.o
+ .debug_line    0x00000000      0x354 ..\obj\stm32f4xx_hal.o
+ .debug_str     0x00000000      0xb10 ..\obj\stm32f4xx_hal.o
+ .comment       0x00000000       0x71 ..\obj\stm32f4xx_hal.o
+ .debug_frame   0x00000000      0x310 ..\obj\stm32f4xx_hal.o
+ .ARM.attributes
+                0x00000000       0x33 ..\obj\stm32f4xx_hal.o
+ .data          0x00000000        0x0 ..\obj\stm32f4xx_hal_gpio.o
+ .bss           0x00000000        0x0 ..\obj\stm32f4xx_hal_gpio.o
  .text          0x00000000      0xd74 ..\obj\stm32f4xx_hal_rcc.o
  .data          0x00000000        0x0 ..\obj\stm32f4xx_hal_rcc.o
  .bss           0x00000000        0x0 ..\obj\stm32f4xx_hal_rcc.o
@@ -120,20 +134,7 @@ Discarded input sections
  .text          0x00000000       0x14 ..\obj\startup_stm32f429xx.o
  .data          0x00000000        0x0 ..\obj\startup_stm32f429xx.o
  .bss           0x00000000        0x0 ..\obj\startup_stm32f429xx.o
- .bss           0x00000000        0x0 ..\obj\system_stm32f4xx.o
- .text          0x00000000      0x368 ..\obj\stm32f4xx_hal.o
- .data          0x00000000        0x0 ..\obj\stm32f4xx_hal.o
- .bss           0x00000000        0x4 ..\obj\stm32f4xx_hal.o
- .debug_info    0x00000000      0xa1c ..\obj\stm32f4xx_hal.o
- .debug_abbrev  0x00000000      0x1ff ..\obj\stm32f4xx_hal.o
- .debug_aranges
-                0x00000000       0x20 ..\obj\stm32f4xx_hal.o
- .debug_line    0x00000000      0x354 ..\obj\stm32f4xx_hal.o
- .debug_str     0x00000000      0xb10 ..\obj\stm32f4xx_hal.o
- .comment       0x00000000       0x71 ..\obj\stm32f4xx_hal.o
- .debug_frame   0x00000000      0x310 ..\obj\stm32f4xx_hal.o
- .ARM.attributes
-                0x00000000       0x33 ..\obj\stm32f4xx_hal.o
+ .data          0x00000000        0x0 ..\obj\timingControl.o
  .data          0x00000000        0x0 ..\obj\main.o
  .text          0x00000000        0x0 c:/program files/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/crtend.o
  .data          0x00000000        0x0 c:/program files/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/crtend.o
@@ -178,27 +179,28 @@ LOAD c:/program files/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-
                 0x08000208                blinkLED1
                 0x080002ac                blinkLED2
                 0x08000350                blinkLED3
- .text          0x08000430      0x674 ..\obj\stm32f4xx_hal_gpio.o
-                0x08000430                HAL_GPIO_Init
-                0x08000778                HAL_GPIO_DeInit
-                0x0800098c                HAL_GPIO_ReadPin
-                0x080009bc                HAL_GPIO_WritePin
-                0x080009ec                HAL_GPIO_TogglePin
-                0x08000a10                HAL_GPIO_LockPin
-                0x08000a60                HAL_GPIO_EXTI_IRQHandler
-                0x08000a90                HAL_GPIO_EXTI_Callback
- .text          0x08000aa4       0x48 ..\obj\initButton.o
-                0x08000aa4                initButton
- .text          0x08000aec       0xa4 ..\obj\initLED.o
-                0x08000aec                initLED
- .text          0x08000b90      0x154 ..\obj\system_stm32f4xx.o
-                0x08000b90                SystemInit
-                0x08000bec                SystemCoreClockUpdate
- .text          0x08000ce4      0x114 ..\obj\main.o
-                0x08000ce4                testCase
-                0x08000d30                getCurrentTime
-                0x08000d68                delay
-                0x08000d98                waitWithoutDelay
+ .text          0x08000430       0x48 ..\obj\initButton.o
+                0x08000430                initButton
+ .text          0x08000478       0xa4 ..\obj\initLED.o
+                0x08000478                initLED
+ .text          0x0800051c      0x154 ..\obj\system_stm32f4xx.o
+                0x0800051c                SystemInit
+                0x08000578                SystemCoreClockUpdate
+ .text          0x08000670      0x674 ..\obj\stm32f4xx_hal_gpio.o
+                0x08000670                HAL_GPIO_Init
+                0x080009b8                HAL_GPIO_DeInit
+                0x08000bcc                HAL_GPIO_ReadPin
+                0x08000bfc                HAL_GPIO_WritePin
+                0x08000c2c                HAL_GPIO_TogglePin
+                0x08000c50                HAL_GPIO_LockPin
+                0x08000ca0                HAL_GPIO_EXTI_IRQHandler
+                0x08000cd0                HAL_GPIO_EXTI_Callback
+ .text          0x08000ce4       0x90 ..\obj\timingControl.o
+                0x08000ce4                getCurrentTime
+                0x08000d1c                delay
+                0x08000d4c                waitWithoutDelay
+ .text          0x08000d74       0x84 ..\obj\main.o
+                0x08000d74                testCase
                 0x08000dc0                main
  *(.text*)
  .text.__libc_init_array
@@ -426,7 +428,8 @@ LOAD c:/program files/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-
  *(.bss)
  .bss           0x20000440       0x1c c:/program files/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/crtbegin.o
  .bss           0x2000045c       0x10 ..\obj\blinkLEDs.o
- .bss           0x2000046c       0x24 ..\obj\main.o
+ .bss           0x2000046c        0xc ..\obj\timingControl.o
+ .bss           0x20000478       0x18 ..\obj\main.o
  *(.bss*)
  *(COMMON)
                 0x20000490                . = ALIGN (0x4)
@@ -459,28 +462,31 @@ LOAD c:/program files/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-
  .ARM.attributes
                 0x0000004c       0x33 ..\obj\blinkLEDs.o
  .ARM.attributes
-                0x0000007f       0x33 ..\obj\stm32f4xx_hal_gpio.o
+                0x0000007f       0x33 ..\obj\initButton.o
  .ARM.attributes
-                0x000000b2       0x33 ..\obj\initButton.o
+                0x000000b2       0x33 ..\obj\initLED.o
  .ARM.attributes
-                0x000000e5       0x33 ..\obj\initLED.o
+                0x000000e5       0x33 ..\obj\system_stm32f4xx.o
  .ARM.attributes
-                0x00000118       0x21 ..\obj\startup_stm32f429xx.o
+                0x00000118       0x33 ..\obj\stm32f4xx_hal_gpio.o
  .ARM.attributes
-                0x00000139       0x33 ..\obj\system_stm32f4xx.o
+                0x0000014b       0x21 ..\obj\startup_stm32f429xx.o
  .ARM.attributes
-                0x0000016c       0x33 ..\obj\main.o
+                0x0000016c       0x33 ..\obj\timingControl.o
  .ARM.attributes
-                0x0000019f       0x1e c:/program files/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/crtn.o
+                0x0000019f       0x33 ..\obj\main.o
+ .ARM.attributes
+                0x000001d2       0x1e c:/program files/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/crtn.o
 LOAD ..\obj\blinkLEDs.o
-LOAD ..\obj\stm32f4xx_hal_gpio.o
 LOAD ..\obj\stm32f4xx_hal_cortex.o
 LOAD ..\obj\initButton.o
 LOAD ..\obj\initLED.o
-LOAD ..\obj\stm32f4xx_hal_rcc.o
-LOAD ..\obj\startup_stm32f429xx.o
 LOAD ..\obj\system_stm32f4xx.o
 LOAD ..\obj\stm32f4xx_hal.o
+LOAD ..\obj\stm32f4xx_hal_gpio.o
+LOAD ..\obj\stm32f4xx_hal_rcc.o
+LOAD ..\obj\startup_stm32f429xx.o
+LOAD ..\obj\timingControl.o
 LOAD ..\obj\main.o
 START GROUP
 LOAD c:/program files/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m\libgcc.a
@@ -491,79 +497,88 @@ LOAD c:/program files/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-
 LOAD c:/program files/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/crtn.o
 OUTPUT(Test01.elf elf32-littlearm)
 
-.debug_info     0x00000000     0x19f9
+.debug_info     0x00000000     0x1a9a
  .debug_info    0x00000000      0x3b7 ..\obj\blinkLEDs.o
- .debug_info    0x000003b7      0x712 ..\obj\stm32f4xx_hal_gpio.o
- .debug_info    0x00000ac9      0x3b3 ..\obj\initButton.o
- .debug_info    0x00000e7c      0x3eb ..\obj\initLED.o
- .debug_info    0x00001267       0x9f ..\obj\startup_stm32f429xx.o
- .debug_info    0x00001306      0x4b4 ..\obj\system_stm32f4xx.o
- .debug_info    0x000017ba      0x23f ..\obj\main.o
+ .debug_info    0x000003b7      0x3b3 ..\obj\initButton.o
+ .debug_info    0x0000076a      0x3eb ..\obj\initLED.o
+ .debug_info    0x00000b55      0x4b4 ..\obj\system_stm32f4xx.o
+ .debug_info    0x00001009      0x712 ..\obj\stm32f4xx_hal_gpio.o
+ .debug_info    0x0000171b       0x9f ..\obj\startup_stm32f429xx.o
+ .debug_info    0x000017ba      0x15e ..\obj\timingControl.o
+ .debug_info    0x00001918      0x182 ..\obj\main.o
 
-.debug_abbrev   0x00000000      0x6cf
+.debug_abbrev   0x00000000      0x749
  .debug_abbrev  0x00000000      0x12d ..\obj\blinkLEDs.o
- .debug_abbrev  0x0000012d      0x1aa ..\obj\stm32f4xx_hal_gpio.o
- .debug_abbrev  0x000002d7       0xf4 ..\obj\initButton.o
- .debug_abbrev  0x000003cb       0xff ..\obj\initLED.o
- .debug_abbrev  0x000004ca       0x12 ..\obj\startup_stm32f429xx.o
- .debug_abbrev  0x000004dc       0xff ..\obj\system_stm32f4xx.o
- .debug_abbrev  0x000005db       0xf4 ..\obj\main.o
+ .debug_abbrev  0x0000012d       0xf4 ..\obj\initButton.o
+ .debug_abbrev  0x00000221       0xff ..\obj\initLED.o
+ .debug_abbrev  0x00000320       0xff ..\obj\system_stm32f4xx.o
+ .debug_abbrev  0x0000041f      0x1aa ..\obj\stm32f4xx_hal_gpio.o
+ .debug_abbrev  0x000005c9       0x12 ..\obj\startup_stm32f429xx.o
+ .debug_abbrev  0x000005db       0xbd ..\obj\timingControl.o
+ .debug_abbrev  0x00000698       0xb1 ..\obj\main.o
 
-.debug_aranges  0x00000000       0xe8
+.debug_aranges  0x00000000      0x108
  .debug_aranges
                 0x00000000       0x20 ..\obj\blinkLEDs.o
  .debug_aranges
-                0x00000020       0x20 ..\obj\stm32f4xx_hal_gpio.o
+                0x00000020       0x20 ..\obj\initButton.o
  .debug_aranges
-                0x00000040       0x20 ..\obj\initButton.o
+                0x00000040       0x20 ..\obj\initLED.o
  .debug_aranges
-                0x00000060       0x20 ..\obj\initLED.o
+                0x00000060       0x20 ..\obj\system_stm32f4xx.o
  .debug_aranges
-                0x00000080       0x28 ..\obj\startup_stm32f429xx.o
+                0x00000080       0x20 ..\obj\stm32f4xx_hal_gpio.o
  .debug_aranges
-                0x000000a8       0x20 ..\obj\system_stm32f4xx.o
+                0x000000a0       0x28 ..\obj\startup_stm32f429xx.o
  .debug_aranges
-                0x000000c8       0x20 ..\obj\main.o
+                0x000000c8       0x20 ..\obj\timingControl.o
+ .debug_aranges
+                0x000000e8       0x20 ..\obj\main.o
 
-.debug_line     0x00000000      0xf23
+.debug_line     0x00000000     0x10ad
  .debug_line    0x00000000      0x26a ..\obj\blinkLEDs.o
- .debug_line    0x0000026a      0x44b ..\obj\stm32f4xx_hal_gpio.o
- .debug_line    0x000006b5      0x21d ..\obj\initButton.o
- .debug_line    0x000008d2      0x220 ..\obj\initLED.o
- .debug_line    0x00000af2       0xa0 ..\obj\startup_stm32f429xx.o
- .debug_line    0x00000b92      0x1c1 ..\obj\system_stm32f4xx.o
- .debug_line    0x00000d53      0x1d0 ..\obj\main.o
+ .debug_line    0x0000026a      0x21d ..\obj\initButton.o
+ .debug_line    0x00000487      0x220 ..\obj\initLED.o
+ .debug_line    0x000006a7      0x1c1 ..\obj\system_stm32f4xx.o
+ .debug_line    0x00000868      0x44b ..\obj\stm32f4xx_hal_gpio.o
+ .debug_line    0x00000cb3       0xa0 ..\obj\startup_stm32f429xx.o
+ .debug_line    0x00000d53      0x1a0 ..\obj\timingControl.o
+ .debug_line    0x00000ef3      0x1ba ..\obj\main.o
 
-.debug_str      0x00000000      0x793
+.debug_str      0x00000000      0x7cf
  .debug_str     0x00000000      0x277 ..\obj\blinkLEDs.o
                                 0x2d0 (size before relaxing)
- .debug_str     0x00000277      0x309 ..\obj\stm32f4xx_hal_gpio.o
-                                0x50f (size before relaxing)
- .debug_str     0x00000580       0x4f ..\obj\initButton.o
+ .debug_str     0x00000277      0x18b ..\obj\initButton.o
                                 0x33d (size before relaxing)
- .debug_str     0x000005cf       0x47 ..\obj\initLED.o
+ .debug_str     0x00000402       0x47 ..\obj\initLED.o
                                 0x335 (size before relaxing)
- .debug_str     0x00000616       0xed ..\obj\system_stm32f4xx.o
+ .debug_str     0x00000449       0xf7 ..\obj\system_stm32f4xx.o
                                 0x337 (size before relaxing)
- .debug_str     0x00000703       0x90 ..\obj\main.o
-                                0x284 (size before relaxing)
+ .debug_str     0x00000540      0x1c3 ..\obj\stm32f4xx_hal_gpio.o
+                                0x50f (size before relaxing)
+ .debug_str     0x00000703       0x6a ..\obj\timingControl.o
+                                0x206 (size before relaxing)
+ .debug_str     0x0000076d       0x62 ..\obj\main.o
+                                0x20d (size before relaxing)
 
 .comment        0x00000000       0x70
  .comment       0x00000000       0x70 ..\obj\blinkLEDs.o
                                  0x71 (size before relaxing)
- .comment       0x00000000       0x71 ..\obj\stm32f4xx_hal_gpio.o
  .comment       0x00000000       0x71 ..\obj\initButton.o
  .comment       0x00000000       0x71 ..\obj\initLED.o
  .comment       0x00000000       0x71 ..\obj\system_stm32f4xx.o
+ .comment       0x00000000       0x71 ..\obj\stm32f4xx_hal_gpio.o
+ .comment       0x00000000       0x71 ..\obj\timingControl.o
  .comment       0x00000000       0x71 ..\obj\main.o
 
-.debug_frame    0x00000000      0x33c
+.debug_frame    0x00000000      0x34c
  .debug_frame   0x00000000       0x7c ..\obj\blinkLEDs.o
- .debug_frame   0x0000007c      0x14c ..\obj\stm32f4xx_hal_gpio.o
- .debug_frame   0x000001c8       0x34 ..\obj\initButton.o
- .debug_frame   0x000001fc       0x34 ..\obj\initLED.o
- .debug_frame   0x00000230       0x58 ..\obj\system_stm32f4xx.o
- .debug_frame   0x00000288       0xb4 ..\obj\main.o
+ .debug_frame   0x0000007c       0x34 ..\obj\initButton.o
+ .debug_frame   0x000000b0       0x34 ..\obj\initLED.o
+ .debug_frame   0x000000e4       0x58 ..\obj\system_stm32f4xx.o
+ .debug_frame   0x0000013c      0x14c ..\obj\stm32f4xx_hal_gpio.o
+ .debug_frame   0x00000288       0x78 ..\obj\timingControl.o
+ .debug_frame   0x00000300       0x4c ..\obj\main.o
 
 .debug_ranges   0x00000000       0x20
  .debug_ranges  0x00000000       0x20 ..\obj\startup_stm32f429xx.o

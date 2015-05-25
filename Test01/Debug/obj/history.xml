@@ -4,7 +4,7 @@
       <target file="stm32f4xx_hal_rcc.o" lastModified="14d6522dd5c">
          <source file="..\..\..\..\stm32cubef4\STM32Cube_FW_F4_V1.5.0\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rcc.c" lastModified="14c0ebff252"/>
       </target>
-      <target file="blinkLEDs.o" lastModified="14d894e532d">
+      <target file="blinkLEDs.o" lastModified="14d899926e6">
          <source file="..\..\..\app\blinkLEDs.c" lastModified="14d894defc6"/>
       </target>
       <target file="stm32f4xx_hal.o" lastModified="14d6522dcc0">
@@ -22,8 +22,8 @@
       <target file="stm32f4xx_hal_cortex.o" lastModified="14d6522dde9">
          <source file="..\..\..\..\stm32cubef4\STM32Cube_FW_F4_V1.5.0\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cortex.c" lastModified="14c0ebff33c"/>
       </target>
-      <target file="main.o" lastModified="14d894e52cf">
-         <source file="..\..\..\app\main.c" lastModified="14d894defb7"/>
+      <target file="main.o" lastModified="14d8999267e">
+         <source file="..\..\..\app\main.c" lastModified="14d89992248"/>
       </target>
       <target file="initButton.o" lastModified="14d89392762">
          <source file="..\..\..\app\initButton.c" lastModified="14d893924c3"/>
@@ -33,6 +33,9 @@
       </target>
       <target file="initGPIO.o" lastModified="14d6ab3b692">
          <source file="..\..\..\app\initGPIO.c" lastModified="14d6ab2fc11"/>
+      </target>
+      <target file="timingControl.o" lastModified="14d89978b5e">
+         <source file="..\..\..\app\timingControl.c" lastModified="14d89977e18"/>
       </target>
    </processor>
 </history>
