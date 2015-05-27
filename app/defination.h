@@ -41,4 +41,4 @@ typedef struct{
 #define ONE_SEC 						1000
 #define THREE_SEC 						3000
 
-#endif defination_H
+#endif //defination_H
