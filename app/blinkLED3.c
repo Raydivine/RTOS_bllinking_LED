@@ -17,9 +17,7 @@ void blinkLED3FiveTimesWhenButtonPressed(State *state, int time){
 			                    break;
 			                }
 
-			                if( ButtonIsPressed())
-			                	*state = LED3_OFF;
-			                else *state = INITIAL;
+			                *state = LED3_OFF;
 			                break;
 
 			case LED3_OFF:	if( ButtonIsNotPressed())

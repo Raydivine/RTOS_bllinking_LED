@@ -22,7 +22,7 @@
 </folder>
 </info>
 </editorArea>
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="C:/Projects/STM32/RTOS_bllinking_LED/app/main.c" title="main.c" tooltip="C:/Projects/STM32/RTOS_bllinking_LED/app/main.c" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="C:/Projects/STM32/RTOS_bllinking_LED/app/main.c" title="main.c" tooltip="C:/Projects/STM32/RTOS_bllinking_LED/app/main.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Test01/main.c"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="343" selectionTopPixel="0"/>
 </editor>
@@ -34,9 +34,9 @@
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Test01/blinkLED2.c"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1087" selectionTopPixel="387"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="blinkLED3.c" partName="blinkLED3.c" path="C:/Projects/STM32/RTOS_bllinking_LED/app/blinkLED3.c" title="blinkLED3.c" tooltip="C:/Projects/STM32/RTOS_bllinking_LED/app/blinkLED3.c" workbook="DefaultEditorWorkbook">
+<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="blinkLED3.c" partName="blinkLED3.c" path="C:/Projects/STM32/RTOS_bllinking_LED/app/blinkLED3.c" title="blinkLED3.c" tooltip="C:/Projects/STM32/RTOS_bllinking_LED/app/blinkLED3.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Test01/blinkLED3.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="136" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1216" selectionTopPixel="722"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="blinkLED3.h" partName="blinkLED3.h" path="C:/Projects/STM32/RTOS_bllinking_LED/app/blinkLED3.h" title="blinkLED3.h" tooltip="C:/Projects/STM32/RTOS_bllinking_LED/app/blinkLED3.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Test01/blinkLED3.h"/>
@@ -64,7 +64,7 @@
 <element path="/Test01/Hardware"/>
 </expanded>
 <selection>
-<element path="/Test01/Hardware/stm32f4xx_hal_gpio.h"/>
+<element path="/Test01/blinkLED3.c"/>
 </selection>
 </viewState>
 </view>
@@ -206,49 +206,34 @@
 <view id="org.coocox.builder.ui.views.ProjectView"/>
 <fastViewBars/>
 <viewLayoutRec closeable="false" id="org.eclipse.debug.ui.DebugView"/>
-<layout>
-<mainWindow>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@1a7bf26">
-<folder activePageID="org.coocox.builder.ui.views.ProjectView" appearance="2" expanded="2">
-<page content="org.coocox.builder.ui.views.ProjectView" label="Project"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
+<layout>&#x0A;<mainWindow>&#x0A;<info folder="true" part="org.eclipse.ui.internal.ViewStack@1a7bf26">&#x0A;<folder activePageID="org.coocox.builder.ui.views.ProjectView" appearance="2" expanded="2">&#x0A;<page content="org.coocox.builder.ui.views.ProjectView" label="Project"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
 </presentation>
 </folder>
 </info>
-<info folder="true" part="stickyFolderRight" ratio="0.75" ratioLeft="954" ratioRight="318" relationship="2" relative="org.eclipse.ui.internal.ViewStack@1a7bf26">
-<folder appearance="2" expanded="2">
-<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
+<info folder="true" part="stickyFolderRight" ratio="0.75" ratioLeft="954" ratioRight="318" relationship="2" relative="org.eclipse.ui.internal.ViewStack@1a7bf26">&#x0A;<folder appearance="2" expanded="2">&#x0A;<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@62fcc6" ratio="0.6995134" ratioLeft="575" ratioRight="247" relationship="4" relative="org.eclipse.ui.internal.ViewStack@1a7bf26">
-<folder activePageID="org.eclipse.debug.ui.DebugView" appearance="2" expanded="2">
-<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@62fcc6" ratio="0.6995134" ratioLeft="575" ratioRight="247" relationship="4" relative="org.eclipse.ui.internal.ViewStack@1a7bf26">&#x0A;<folder activePageID="org.eclipse.debug.ui.DebugView" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
 <page content="org.eclipse.debug.ui.DebugView" label="Debug"/>
 <page content="org.eclipse.debug.ui.BreakpointView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
 <part id="1"/>
 </presentation>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@182b7e9" ratio="0.5" ratioLeft="636" ratioRight="636" relationship="2" relative="org.eclipse.ui.internal.ViewStack@62fcc6">
-<folder activePageID="org.coocox.codebugger.trace.ui.traceview" appearance="2" expanded="2">
-<page content="org.coocox.codebugger.trace.ui.traceview" label="Semihosting"/>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@182b7e9" ratio="0.5" ratioLeft="636" ratioRight="636" relationship="2" relative="org.eclipse.ui.internal.ViewStack@62fcc6">&#x0A;<folder activePageID="org.coocox.codebugger.trace.ui.traceview" appearance="2" expanded="2">&#x0A;<page content="org.coocox.codebugger.trace.ui.traceview" label="Semihosting"/>
 <page content="org.eclipse.debug.ui.VariableView" label="Variables"/>
 <page content="org.eclipse.debug.ui.ExpressionView" label="LabelNotFound"/>
 <page content="org.eclipse.debug.ui.MemoryView" label="LabelNotFound"/>
 <page content="org.eclipse.cdt.debug.ui.memory.memorybrowser.MemoryBrowser" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
 <part id="1"/>
 </presentation>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@10a4c89" ratio="0.75" ratioLeft="954" ratioRight="318" relationship="2" relative="org.eclipse.ui.internal.ViewStack@1a7bf26">
-<folder appearance="2" expanded="2">
-<page content="org.eclipse.cdt.dsf.debug.ui.disassembly.view" label="LabelNotFound"/>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@10a4c89" ratio="0.75" ratioLeft="954" ratioRight="318" relationship="2" relative="org.eclipse.ui.internal.ViewStack@1a7bf26">&#x0A;<folder appearance="2" expanded="2">&#x0A;<page content="org.eclipse.cdt.dsf.debug.ui.disassembly.view" label="LabelNotFound"/>
 <page content="org.eclipse.ui.views.ContentOutline" label="LabelNotFound"/>
 <page content="org.eclipse.debug.ui.RegisterView" label="LabelNotFound"/>
 <page content="org.coocox.coassistant.view.CoAssistantView_debug" label="LabelNotFound"/>
@@ -274,16 +259,9 @@
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Test01/main.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Test01/blinkLED1.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Test01/blinkLED3.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Test01/blinkLED3.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Test01/blinkLED2.c"/>
 </editors>
-<item historyLabel="blinkLED1.c" index="5">
-<position info="not_deleted" x="343" y="41"/>
-</item>
-<item historyLabel="main.c" index="1">
-<position info="not_deleted" x="561" y="0"/>
-</item>
-<item historyLabel="blinkLED1.c" index="5">
-<position info="not_deleted" x="624" y="0"/>
-</item>
 <item historyLabel="blinkLED2.c" index="6">
 <position info="not_deleted" x="995" y="0"/>
 </item>
@@ -422,8 +400,17 @@
 <item historyLabel="main.c" index="8">
 <position info="not_deleted" x="557" y="0"/>
 </item>
-<item active="true" historyLabel="main.c" index="8">
+<item historyLabel="main.c" index="8">
 <position info="not_deleted" x="252" y="62"/>
+</item>
+<item historyLabel="blinkLED3.c" index="11">
+<position info="not_deleted" x="136" y="0"/>
+</item>
+<item historyLabel="blinkLED2.c" index="12">
+<position info="not_deleted" x="1087" y="0"/>
+</item>
+<item active="true" historyLabel="blinkLED3.c" index="11">
+<position info="not_deleted" x="952" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
