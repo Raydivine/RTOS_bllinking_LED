@@ -12,32 +12,39 @@ void blinkLED3FiveTimesWhenButtonPressed(State *state, int time){
 	switch (*state){
 			case  INITIAL:	turnOffLED3();
 
-                      	  	if( ButtonIsPressed() && counter < 5){
-                      	  		*state = LED3_OFF;
-                      	  		break;
-                      	  	}
+							if(counter>5){
+			                   *state = INITIAL;
+			                    break;
+			                }
+
+			                if( ButtonIsPressed())
+			                	*state = LED3_OFF;
+			                else *state = INITIAL;
+			                break;
 
 			case LED3_OFF:	if( ButtonIsNotPressed())
                       	  		break;
                       
-                      	  	if( counterIsEqualFive(counter)){
-                      	  		*state = INITIAL;
-                      	  		break;
-                      	  	}
+							if(counter>=5){     //During off state,  counter equal of 5 times means LED3 blinked 5 times
+			                	*state = INITIAL;
+			                	break;
+			                }
       
                       	  	if( waitWithoutDelay( previousTime,time) ){
                       	  		previousTime = getCurrentTime();
                       	  		turnOnLED3();
                       	  		*state = LED3_ON;
+                      	  		counter++;
+                      	  		break;
                       	  	}
-                      	  	break;
+
                       
 			case  LED3_ON:	if( ButtonIsNotPressed()){
 								*state = LED3_OFF;
 								break;
 							}
 
-							if( counterIsEqualFive(counter)){
+							if(counter>5){   //During on state,  counter more than 5 means blinked 5 times
 			                	*state = INITIAL;
 			                	break;
 			                }
@@ -46,9 +53,8 @@ void blinkLED3FiveTimesWhenButtonPressed(State *state, int time){
 								previousTime = getCurrentTime();
 								turnOffLED3();
 								*state = LED3_OFF;
-								counter++;
+								break;
 							}
-							break;
 
 			default: 		break;
 		}
@@ -74,9 +80,3 @@ int ButtonIsPressed(){
 	return 0;
 }
 
-int counterIsEqualFive( int counter){
-
-	 if(counter>=5)
-	 	return 1;
-	 return 0;
-}
