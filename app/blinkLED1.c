@@ -1,6 +1,8 @@
 #include "stm32f4xx_hal.h"
 #include "stm32f4xx_hal_gpio.h"
 #include "blinkLED1.h"
+#include "timingControl.h"
+#include "initButton.h"
 #include "defination.h"
 
 void blinkLED1(State *state, int time){

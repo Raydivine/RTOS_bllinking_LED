@@ -1,20 +1,20 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <history>
    <processor signature="4.9.3 -mcpu=cortex-m3 -mthumb -g -Map=Test01.map -O0 --gc-sections -LC:/Projects/STM32/RTOS_bllinking_LED -TC:/Projects/STM32/RTOS_bllinking_LED/stm32f407vg_flash.ld -g">
-      <target file="Test01.elf" lastModified="14d94640eb0">
-         <source file="..\obj\blinkLED2.o" lastModified="14d946400e5"/>
-         <source file="..\obj\blinkLED3.o" lastModified="14d9464022d"/>
-         <source file="..\obj\main.o" lastModified="14d94640450"/>
-         <source file="..\obj\startup_stm32f429xx.o" lastModified="14d9464045f"/>
-         <source file="..\obj\stm32f4xx_hal.o" lastModified="14d94640579"/>
-         <source file="..\obj\stm32f4xx_hal_rcc.o" lastModified="14d946406d0"/>
-         <source file="..\obj\initButton.o" lastModified="14d946407bb"/>
-         <source file="..\obj\stm32f4xx_hal_cortex.o" lastModified="14d946408d4"/>
-         <source file="..\obj\system_stm32f4xx.o" lastModified="14d94640941"/>
-         <source file="..\obj\stm32f4xx_hal_gpio.o" lastModified="14d94640a2c"/>
-         <source file="..\obj\initLED.o" lastModified="14d94640af7"/>
-         <source file="..\obj\timingControl.o" lastModified="14d94640bb2"/>
-         <source file="..\obj\blinkLED1.o" lastModified="14d94640c7d"/>
+      <target file="Test01.elf" lastModified="14d94ec1196">
+         <source file="..\obj\blinkLED2.o" lastModified="14d94ec04d4"/>
+         <source file="..\obj\blinkLED3.o" lastModified="14d94ec05de"/>
+         <source file="..\obj\main.o" lastModified="14d94ec06d8"/>
+         <source file="..\obj\startup_stm32f429xx.o" lastModified="14d94ec06f7"/>
+         <source file="..\obj\stm32f4xx_hal.o" lastModified="14d94ec0820"/>
+         <source file="..\obj\stm32f4xx_hal_rcc.o" lastModified="14d94ec0949"/>
+         <source file="..\obj\initButton.o" lastModified="14d94ec0a14"/>
+         <source file="..\obj\stm32f4xx_hal_cortex.o" lastModified="14d94ec0b1e"/>
+         <source file="..\obj\system_stm32f4xx.o" lastModified="14d94ec0b9b"/>
+         <source file="..\obj\stm32f4xx_hal_gpio.o" lastModified="14d94ec0c85"/>
+         <source file="..\obj\initLED.o" lastModified="14d94ec0d60"/>
+         <source file="..\obj\timingControl.o" lastModified="14d94ec0e2b"/>
+         <source file="..\obj\blinkLED1.o" lastModified="14d94ec0f15"/>
       </target>
    </processor>
 </history>

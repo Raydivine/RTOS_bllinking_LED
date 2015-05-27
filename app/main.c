@@ -9,7 +9,7 @@
 #include "timingControl.h"
 
 int main(void){
-	static *state1 = INITIAL, *state2 = INITIAL, *state3 = INITIAL;
+	State state1 = INITIAL, state2 = INITIAL, state3 = INITIAL;
 
 	initLED();
 	initButton();

@@ -1,6 +1,8 @@
 #include "stm32f4xx_hal.h"
 #include "stm32f4xx_hal_gpio.h"
 #include "blinkLED2.h"
+#include "timingControl.h"
+#include "initButton.h"
 #include "defination.h"
 
 void blinkLED2AndControlSpeedByButton(State *state){
@@ -25,7 +27,7 @@ void blinkLED2AndControlSpeedByButton(State *state){
                   	  	if( waitWithoutDelay( previousTime,time) ){
                   	  		previousTime = getCurrentTime();
                   	  		turnOffLED2();
-                  	  		state = LED2_OFF;
+                  	  		*state = LED2_OFF;
                   	  	}
                   	  	break;
 
